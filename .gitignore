@@ -1,0 +1,20 @@
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!*.code-workspace
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# Bicep
+# Compiled ARM templates produced by `bicep build` (output next to the .bicep source)
+main.json
+**/main.json
+# Decompiled / build artifacts
+*.bicep.json
+# Local Bicep cache and restore folders
+.bicep/
