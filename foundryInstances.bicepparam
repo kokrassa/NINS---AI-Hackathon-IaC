@@ -4,7 +4,7 @@ using 'foundryInstances.bicep'
 param instanceCount = 3
 
 // Region for every resource group and AI Foundry resource.
-param location = 'swedencetral'
+param location = 'swedencentral'
 
 // Naming prefixes. An index suffix is appended per instance.
 param resourceGroupNamePrefix = 'rg-aifoundry'
