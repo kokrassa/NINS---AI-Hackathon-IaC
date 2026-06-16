@@ -26,6 +26,30 @@ param sku string = 'S0'
 ])
 param publicNetworkAccess string = 'Enabled'
 
+@description('Whether to deploy a model into each AI Foundry resource.')
+param deployModel bool = false
+
+@description('Name of the model to deploy (e.g. gpt-4o). Required when deployModel is true.')
+param modelName string?
+
+@description('Version of the model to deploy (e.g. 2024-08-06). Required when deployModel is true.')
+param modelVersion string?
+
+@description('Capacity type / deployment SKU for the model.')
+@allowed([
+  'Standard'
+  'GlobalStandard'
+  'ProvisionedManaged'
+  'DataZoneStandard'
+])
+param modelCapacityType string = 'Standard'
+
+@description('Capacity (TPM in thousands or PTUs) allocated to the model deployment.')
+param modelCapacity int?
+
+@description('Model format / publisher (e.g. OpenAI).')
+param modelFormat string = 'OpenAI'
+
 // Suffix that helps keep the globally unique CognitiveServices account name (and its subdomain) collision free.
 var uniqueSuffix = uniqueString(subscription().subscriptionId, resourceGroupNamePrefix)
 
@@ -49,6 +73,12 @@ module aiFoundry 'aiFoundryAccount.module.bicep' = [
       tags: tags
       sku: sku
       publicNetworkAccess: publicNetworkAccess
+      deployModel: deployModel
+      modelName: modelName
+      modelVersion: modelVersion
+      modelCapacityType: modelCapacityType
+      modelCapacity: modelCapacity
+      modelFormat: modelFormat
     }
   }
 ]

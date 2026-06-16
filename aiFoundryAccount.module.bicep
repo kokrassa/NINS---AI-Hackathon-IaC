@@ -14,6 +14,7 @@ param modelName string?
 param modelVersion string?
 @allowed([
   'Standard'
+  'GlobalStandard'
   'ProvisionedManaged'
   'DataZoneStandard'
 ])
@@ -58,7 +59,7 @@ resource project 'Microsoft.CognitiveServices/accounts/projects@2025-06-01' = {
 
 // Deploy model (for OpenAI)
 resource modelDeployment 'Microsoft.CognitiveServices/accounts/deployments@2025-06-01' = if (deployModel) {
-  name: modelName
+  name: modelName ?? ''
   parent: account
   sku: {
     name: modelCapacityType
@@ -67,7 +68,7 @@ resource modelDeployment 'Microsoft.CognitiveServices/accounts/deployments@2025-
   properties: {
     model: {
       format: modelFormat
-      name: modelName
+      name: modelName ?? ''
       version: modelVersion
     }
   }
