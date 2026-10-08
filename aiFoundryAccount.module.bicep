@@ -59,6 +59,9 @@ resource project 'Microsoft.CognitiveServices/accounts/projects@2025-06-01' = {
 
 // Deploy model (for OpenAI)
 resource modelDeployment 'Microsoft.CognitiveServices/accounts/deployments@2025-06-01' = if (deployModel) {
+  dependsOn: [
+    project
+  ]
   name: modelName ?? ''
   parent: account
   sku: {

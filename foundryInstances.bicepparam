@@ -7,8 +7,8 @@ param instanceCount = 3
 param location = 'swedencentral'
 
 // Naming prefixes. An index suffix is appended per instance.
-param resourceGroupNamePrefix = 'rg-aifoundry-kk'
-param foundryNamePrefix = 'aifoundry-kk'
+param resourceGroupNamePrefix = 'rg-aifoundry-konkra'
+param foundryNamePrefix = 'aifoundry-konkra'
 
 param tags = {
   environment: 'dev'
@@ -20,8 +20,8 @@ param publicNetworkAccess = 'Enabled'
 
 // Model deployment settings (applied to every AI Foundry instance).
 param deployModel = true
-param modelName = 'gpt-4.1-nano'
-param modelVersion = '2025-04-14'
+param modelName = 'gpt-5-mini'
+param modelVersion = '2025-08-07'
 param modelCapacityType = 'GlobalStandard'
 param modelCapacity = 50
 param modelFormat = 'OpenAI'
